@@ -1,6 +1,7 @@
 # prometheus-alertmanager-incident-automation
 Prometheus and Alertmanager incident automation for Kubernetes host and service downtime using GitHub Issues and SOAR workflow.
 
+<pre> 
 prometheus-alertmanager-incident-automation/
 ├── README.md
 ├── prometheus-rules/
@@ -14,3 +15,4 @@ prometheus-alertmanager-incident-automation/
 │   └── alertmanager-alert.png
 └── docs/
     └── interview-explanation.md
+</pre>
