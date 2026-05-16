@@ -1,0 +1,10 @@
+{
+  "title": "[CRITICAL] HostDown - 10.10.2.71:9100",
+  "body": "## Alert Summary\n\n**Alert:** HostDown\n**Severity:** critical\n**Instance:** 10.10.2.71:9100\n**Job:** node-exporter\n**Status:** firing\n\n## Description\n\nPrometheus cannot scrape node_exporter for more than 2 minutes.\n\n## Initial Triage\n\n- Check node reachability\n- Check node_exporter\n- Check firewall/UFW\n- Check Kubernetes node status\n\n## Runbook\n\nrunbooks/host-down.md",
+  "labels": [
+    "incident",
+    "prometheus",
+    "critical",
+    "host-down"
+  ]
+}
