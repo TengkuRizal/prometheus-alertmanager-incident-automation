@@ -1,0 +1,15 @@
+route:
+  receiver: shuffle-github-incident
+  group_by:
+    - alertname
+    - instance
+    - severity
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 4h
+
+receivers:
+  - name: shuffle-github-incident
+    webhook_configs:
+      - url: "http://SHUFFLE_URL/api/v1/hooks/YOUR_WEBHOOK_ID"
+        send_resolved: true

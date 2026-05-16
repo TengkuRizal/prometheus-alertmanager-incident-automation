@@ -1,0 +1,21 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: host-down-alerts
+  namespace: monitoring
+  labels:
+    release: monitoring
+spec:
+  groups:
+    - name: homelab-host-alerts
+      rules:
+        - alert: HostDown
+          expr: up{job=~".*node-exporter.*"} == 0
+          for: 2m
+          labels:
+            severity: critical
+            category: infrastructure
+          annotations:
+            summary: "Host down: {{ $labels.instance }}"
+            description: "node_exporter on {{ $labels.instance }} has not been scraped for more than 2 minutes."
+            runbook_url: "https://github.com/TengkuRizal/prometheus-alertmanager-incident-automation/blob/main/runbooks/host-down.md"
