@@ -98,7 +98,7 @@ Incident workflow creates GitHub Issue
 ## Implemented Alert
 
 | Alert | Expression | Severity | Purpose |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | HostDown | `up{job=~".*node-exporter.*"} == 0` | Critical | Detect when Prometheus cannot scrape node_exporter for more than 2 minutes |
 
 ---
