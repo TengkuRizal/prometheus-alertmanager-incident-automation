@@ -227,12 +227,12 @@ In a real fintech or MNC environment, critical alerts would normally be routed t
 In this homelab project, GitHub Issues and SOAR-style webhook automation are used to simulate incident ticket creation and post-incident engineering follow-up.
 
 | Homelab Implementation | Real Enterprise Equivalent |
-|---|---|
+| --- | --- |
 | Prometheus | Prometheus, Datadog, New Relic, CloudWatch |
-| Alertmanager | Alertmanager, PagerDuty, Opsgenie, JSM |
-| GitHub Issue | Jira / ServiceNow incident ticket |
-| Runbook markdown | Confluence / Knowledge Base |
-| Shuffle SOAR | SOAR / Automation workflow |
+| Alertmanager | Alertmanager, PagerDuty, Opsgenie, Jira Service Management |
+| GitHub Issue | Jira or ServiceNow incident ticket |
+| Runbook markdown | Confluence or internal knowledge base |
+| Shuffle SOAR | SOAR or automation workflow |
 
 ---
 
