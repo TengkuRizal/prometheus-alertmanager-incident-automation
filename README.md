@@ -255,6 +255,15 @@ Example explanation:
 
 ---
 
+## Documentation
+
+- [Interview Explanation](docs/interview-explanation.md)
+- [Host Down Runbook](runbooks/host-down.md)
+- [Host Down PrometheusRule](prometheus-rules/host-down-alerts.yaml)
+- [Alertmanager Config Example](alertmanager/alertmanager-config-example.yaml)
+
+---
+
 ## Future Improvements
 
 - Add Shuffle webhook workflow
