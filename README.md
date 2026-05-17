@@ -220,6 +220,19 @@ The runbook covers:
 
 ---
 
+## End-to-End Incident Automation
+
+This project successfully demonstrates an end-to-end incident automation workflow:
+
+```text
+Prometheus
+↓
+Alertmanager
+↓
+Shuffle SOAR
+↓
+GitHub Issue
+
 ## Fintech / MNC Practice Mapping
 
 In a real fintech or MNC environment, critical alerts would normally be routed to tools such as PagerDuty, Opsgenie, Jira Service Management, or ServiceNow for on-call escalation and SLA tracking.
