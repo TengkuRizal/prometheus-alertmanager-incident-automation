@@ -133,6 +133,10 @@ prometheus-alertmanager-incident-automation/
 
 ![Alertmanager Alert](screenshots/alertmanager-alert.png)
 
+### GitHub Incident Issue Created
+
+![GitHub Incident Issue](screenshots/github-incident-issue.png)
+
 ---
 
 ## Validation Evidence
