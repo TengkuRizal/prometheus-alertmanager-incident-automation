@@ -225,6 +225,11 @@ The runbook covers:
 This project successfully demonstrates an end-to-end incident automation workflow:
 
 ```text
+## End-to-End Incident Automation
+
+This project successfully demonstrates an end-to-end incident automation workflow:
+
+```text
 Prometheus
 ↓
 Alertmanager
@@ -232,6 +237,7 @@ Alertmanager
 Shuffle SOAR
 ↓
 GitHub Issue
+```
 
 ## Fintech / MNC Practice Mapping
 
