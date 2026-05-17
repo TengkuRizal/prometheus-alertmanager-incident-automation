@@ -13,7 +13,7 @@ This project demonstrates how infrastructure alerts can be detected, routed, doc
 
 ## Overview
 
-This project implements a monitoring and alerting workflow using Prometheus, Alertmanager, Kubernetes, and GitHub Issues.
+This project implements a monitoring and alerting workflow using Prometheus, Alertmanager, Kubernetes, Shuffle SOAR, and GitHub Issues.
 
 The first implemented alert detects when a host or Kubernetes node is unreachable through `node_exporter`.
 
@@ -30,7 +30,7 @@ PrometheusRule: HostDown
         ↓
 Alertmanager
         ↓
-SOAR / Webhook workflow
+Shuffle SOAR webhook
         ↓
 GitHub Issue incident ticket
 ```
@@ -68,7 +68,7 @@ Alertmanager
   ├── Supports silencing and inhibition
   └── Sends alerts to webhook/SOAR workflow
 
-SOAR / Webhook Automation
+Shuffle SOAR / Webhook Automation
   ├── Receives Alertmanager payload
   ├── Extracts alert labels and annotations
   ├── Adds severity and incident metadata
@@ -90,7 +90,9 @@ Prometheus marks alert as FIRING
         ↓
 Alertmanager receives and groups alert
         ↓
-Incident workflow creates GitHub Issue
+Shuffle SOAR receives webhook payload
+        ↓
+GitHub Issue is created automatically
 ```
 
 ---
@@ -116,7 +118,9 @@ prometheus-alertmanager-incident-automation/
 │   └── host-down.md
 ├── screenshots/
 │   ├── prometheus-alert-firing.png
-│   └── alertmanager-alert.png
+│   ├── alertmanager-alert.png
+│   └── github-incident-issue.png
+├── shuffle/
 └── docs/
     └── interview-explanation.md
 ```
@@ -153,6 +157,8 @@ Alert status: FIRING
 Affected target: 10.10.2.71:9100
 Severity: critical
 Alertmanager received alert: yes
+Shuffle webhook received alert: yes
+GitHub Issue created: yes
 ```
 
 ---
@@ -238,6 +244,10 @@ Shuffle SOAR
 GitHub Issue
 ```
 
+A `HostDown` alert was triggered for `10.10.2.71:9100`, routed to Alertmanager, received by Shuffle SOAR, and automatically converted into a GitHub Issue with severity and incident labels.
+
+---
+
 ## Fintech / MNC Practice Mapping
 
 In a real fintech or MNC environment, critical alerts would normally be routed to tools such as PagerDuty, Opsgenie, Jira Service Management, or ServiceNow for on-call escalation and SLA tracking.
@@ -262,14 +272,14 @@ This project demonstrates:
 - Alertmanager alert grouping and routing
 - Host down detection using `node_exporter`
 - Kubernetes observability with kube-prometheus-stack
-- Incident workflow design
-- Runbook-driven response
+- Shuffle SOAR webhook integration
 - GitHub Issues as incident ticket simulation
+- Runbook-driven response
 - Enterprise-style alerting mapped to homelab tools
 
 Example explanation:
 
-> I built this project to simulate a production-style incident workflow. Prometheus detects when a host or Kubernetes node is unreachable through node_exporter. The alert is evaluated using a PrometheusRule and routed to Alertmanager. Alertmanager groups the alert and can forward it to a SOAR or webhook workflow, where an incident ticket can be created in GitHub Issues with severity, affected instance, and runbook link.
+> I built this project to simulate a production-style incident workflow. Prometheus detects when a host or Kubernetes node is unreachable through node_exporter. The alert is evaluated using a PrometheusRule and routed to Alertmanager. Alertmanager groups the alert and forwards it to Shuffle SOAR, where an incident ticket is automatically created in GitHub Issues with severity, affected instance, labels, and runbook link.
 
 ---
 
@@ -284,15 +294,13 @@ Example explanation:
 
 ## Future Improvements
 
-- Add Shuffle webhook workflow
-- Create GitHub Issue automatically from Alertmanager alerts
 - Add blackbox_exporter for HTTP/TCP service availability checks
 - Add service down alert for GitLab, Grafana, Wazuh, and demo-nginx
-- Add Alertmanager route based on severity
+- Add Alertmanager route based on severity and service owner
 - Add alert silence and maintenance window documentation
 - Add Grafana dashboard for incident overview
-- Add resolved alert workflow
-- Add labels to GitHub Issues automatically
+- Add resolved alert workflow to close or comment on GitHub Issues
+- Add labels to GitHub Issues automatically based on severity and service
 - Add runbooks for service down and Kubernetes node not ready
 
 ---
